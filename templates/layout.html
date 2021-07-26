@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% if title %}
+    <title> GA Blog - {{title}}</title>
+{% else %}
+    <title> GA Blog </title>
+{% endif %}
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="container">
+                <!-- Navbar Left Side --> 
+                <div>
+                    <a href="/">Flask Blog</a>
+                    <a href="/about">About</a>
+                </div>
+                <!-- Navbar Right Side -->
+                <div>
+                    <a href="/login">Login</a>
+                    <a href="/register">Register</a>
+                </div>
+                </div>
+            </div>
+        </nav>
+      </header>
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>

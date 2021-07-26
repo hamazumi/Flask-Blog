@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block content%}
+    {% for post in posts %}
+        <div>
+            <div>
+                <a class="mr-2" href="#">{{ post.author }}</a>
+                <small>{{ post.date_posted }}</small>
+            </div>
+            <h2><a href="#">{{ post.title }}</a></h2>
+            <p>{{ post.content }}</p>  
+        </div>
+    {% endfor %}
+{% endblock content %}
