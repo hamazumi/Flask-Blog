@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+
     {% if title %}
     <title> GA Blog - {{title}}</title>
-{% else %}
-    <title> GA Blog </title>
-{% endif %}
+    {% else %}
+        <title> GA Blog </title>
+    {% endif %}
 </head>
 <body>
     <header>
@@ -13,13 +20,13 @@
             <div class="container">
                 <!-- Navbar Left Side --> 
                 <div>
-                    <a href="/">Flask Blog</a>
-                    <a href="/about">About</a>
+                    <a href="{{ url_for('homepage') }}">Flask Blog</a>
+                    <a href="{{ url_for('about') }}">About</a>
                 </div>
                 <!-- Navbar Right Side -->
                 <div>
-                    <a href="/login">Login</a>
-                    <a href="/register">Register</a>
+                    <a href="{{ url_for('login') }}">Login</a>
+                    <a href="{{ url_for('register') }}">Register</a>
                 </div>
                 </div>
             </div>
@@ -27,6 +34,7 @@
       </header>
     <main class="container">
         {% block content %}{% endblock %}
+
     </main>
 </body>
 </html>
