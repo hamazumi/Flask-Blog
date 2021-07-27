@@ -61,7 +61,9 @@ def logout():
 @app.route('/post/new', methods = ['GET', 'POST'])
 @login_required
 def new_post():
+    # -------USE POSTFORM FROM FORMS--------
     form = PostForm()
+    # -----------IF FORM VALIDATED, ADD POST INTO POST DB AND REDIRECT TO HOMEPAGE-------------
     if form.validate_on_submit():
         post = Post(title=form.title.data, content=form.content.data, author=current_user)
         db.session.add(post)
@@ -79,17 +81,20 @@ def post(post_id):
 @app.route('/post/<int:post_id>/update', methods = ['GET', 'POST'])
 @login_required
 def update_post(post_id):
+    # -------------GET POST FROM DB OR 404 IF NO POST FOUND-----------
     post = Post.query.get_or_404(post_id)
+    # -------------CHECK TO SEE IF USER IS OWNER OF POST-----------
     if post.author != current_user:
         abort(403)
     form = PostForm()
+     # -----------IF FORM VALIDATED, EDIT POST INTO POST DB AND REDIRECT TO SINGLE POST-------------
     if form.validate_on_submit():
         # No need to db add because you are updating db
         post.title = form.title.data
         post.content = form.content.data
         db.session.commit()
         return redirect(url_for('post', post_id=post.id))
-    # Below fills out form with current data
+    # ----------FILL OUT FORM TO EDIT WITH CURRENT DATA--------------
     elif request.method == 'GET':
         form.title.data = post.title
         form.content.data = post.content
@@ -99,9 +104,12 @@ def update_post(post_id):
 @app.route('/post/<int:post_id>/delete', methods = ['POST'])
 @login_required
 def delete_post(post_id):
+     # -------------GET POST FROM DB OR 404 IF NO POST FOUND-----------
     post = Post.query.get_or_404(post_id)
+    # -------------CHECK TO SEE IF USER IS OWNER OF POST-----------
     if post.author != current_user:
         abort(403)
+    # -----------------DELETE AND REDIECT TO HOMEPAGE-----------------
     db.session.delete(post)
     db.session.commit()
     return redirect(url_for('homepage'))
