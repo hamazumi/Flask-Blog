@@ -3,7 +3,7 @@ from wtforms import StringField, PasswordField, SubmitField, BooleanField, TextA
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 from blog.models import User
 
-# REGISTER FORM
+# ----------------REGISTER FORM-------------------
 class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired(), Length(min=2, max=20)])
     email = StringField('Email', validators=[DataRequired(), Email()])
@@ -11,6 +11,7 @@ class RegistrationForm(FlaskForm):
     confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Sign Up')
 
+# -------------VALIDATION BELOW PREVENTS USERS FROM USING DUPLICATE USERNAME/EMAIL------------
     def validate_username(self, username):
         # check username submitted by form
         user = User.query.filter_by(username=username.data).first()
@@ -23,14 +24,14 @@ class RegistrationForm(FlaskForm):
         if user:
             raise ValidationError('That email is taken!💩')
 
-# LOGIN FORM
+# ----------------------LOGIN FORM------------------
 class LoginForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
     remember = BooleanField('Remember Me')
     submit = SubmitField('Login')
 
-# POST BLOG FORM
+# --------------------POST BLOG FORM--------------------
 class PostForm(FlaskForm):
     title = StringField('Title', validators=[DataRequired()])
     content = TextAreaField('Content', validators=[DataRequired()])

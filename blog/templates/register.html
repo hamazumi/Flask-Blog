@@ -1,5 +1,8 @@
+<!-- ----------- SENDS INFO TO LAYOUT------------ -->
 {% extends "layout.html" %}
 {% block content%}
+
+<!-- ----------------FORM TO REGISTER-------------- -->
     <div>
         <form method="POST" action="">
             {{ form.hidden_tag() }}
@@ -28,6 +31,8 @@
         </form>
     </div>
     <div>
+
+        <!-- ------------LINK TO LOGIN IF ALREADY REGISTERED--------------- -->
         <small>
             Already Have Account? <a href="{{ url_for('login') }}">Log In</a>
         </small>

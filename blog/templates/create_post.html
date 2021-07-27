@@ -1,9 +1,13 @@
+<!-- ----------- SENDS INFO TO LAYOUT------------ -->
 {% extends "layout.html" %}
 {% block content%}
+
+<!-- ----------------FORM TO SUBMIT OR EDIT POST-------------- -->
     <div>
         <form method="POST" action="">
             {{ form.hidden_tag() }}
             <fieldset>
+                <!-- ---------CHANGES LEGEND TO SHOW NEW/EDIT POST----------- -->
                 <legend>{{ legend }}</legend>
                 <div>
                     {{ form.title.label }}

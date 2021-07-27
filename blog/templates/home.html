@@ -1,11 +1,16 @@
+<!-- ----------- SENDS INFO TO LAYOUT------------ -->
 {% extends "layout.html" %}
 {% block content%}
+
+<!-- ----------- LOOPS THROUGH POSTS AND SHOWS ALL POST FROM POST DB------------ -->
     {% for post in posts %}
         <div>
             <div>
-                <h2><a class="mr-2" href="#">{{ post.author.username }}</a></h2>
+                <h2>{{ post.author.username }}</h2>
                 <small>{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
             </div>
+            
+            <!-- -------------TITLE LINKS TO SINGLE POST------------ -->
             <h2><a href="{{ url_for('post', post_id=post.id) }}">{{ post.title }}</a></h2>
             <p>{{ post.content }}</p>  
         </div>
