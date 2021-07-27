@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block content%}
+   
+    <div>
+        <div>
+            <h2>{{ post.author.username }}</h2>
+            <small>{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+            {% if post.author == current_user %}
+                <div>
+                    <a href="{{ url_for('update_post', post_id = post.id) }}">UPDATE</a>
+                    <form action="{{ url_for('delete_post', post_id=post.id) }}" method="POST">
+                        <input class="btn btn-danger" type="submit" value="Delete">
+                    <form/>
+                </div>
+            {% endif %}
+        </div>
+        <h2><a href="#">{{ post.title }}</a></h2>
+        <p>{{ post.content }}</p>  
+    </div>
+
+{% endblock content %}
