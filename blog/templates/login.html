@@ -6,7 +6,7 @@
     <div class="bg-blue-100 py-24 px-10 min-h-screen w-screen">
         <form method="POST" action="" class="md:w-1/2 mx-auto">
                 {{ form.hidden_tag() }}
-                <fieldset>
+                <div class="shadow-xl">
                     <!-- <legend>Login</legend> -->
                     <div class="flex items-center bg-gray-400 rounded-t-lg border-b border-gray-500">
                         {{ form.email.label (class="w-20 text-right mr-8 text-gray-100")}}
@@ -16,10 +16,10 @@
                         {{ form.password.label (class="w-20 text-right mr-8 text-gray-100")}}
                         {{ form.password (class="flex-1 p-4 pl-0 bg-transparent outline-none text-white")}}
                     </div>
-                </fieldset>
+                </div>
 
             <div>
-                {{ form.submit (class="block w-full rounded bg-green-400 py-3 text-white font-bold transition duration-500 ease-out hover:bg-green-700")}}
+                {{ form.submit (class="block w-full rounded shadow bg-green-400 py-3 text-white font-bold transition duration-500 ease-out hover:bg-green-700")}}
             </div>
         </form>
         <div>
