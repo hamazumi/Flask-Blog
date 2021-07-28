@@ -3,39 +3,38 @@
 {% block content%}
 
 <!-- ----------------FORM TO REGISTER-------------- -->
-    <div>
-        <form method="POST" action="">
+    <div class="bg-gray-200 py-32 px-10 min-h-screen">
+        <form method="POST" action="" class="md:w-1/2 mx-auto">
             {{ form.hidden_tag() }}
             <fieldset>
-                <legend>Join Today</legend>
-                <div>
-                    {{ form.username.label }}
-                    {{ form.username }}
+                <!-- <legend>Join Today</legend> -->
+                <div class="flex items-center bg-gray-400 rounded-t-lg border-b border-gray-500">
+                    {{ form.username.label (class="w-20 text-right mr-8 text-gray-100")}}
+                    {{ form.username (class="flex-1 p-4 pl-0 bg-transparent outline-none text-white")}}
                 </div>
-                <div>
-                    {{ form.email.label }}
-                    {{ form.email }}
+                <div class="flex items-center bg-gray-400 border-b border-gray-500">
+                    {{ form.email.label (class="w-20 text-right mr-8 text-gray-100")}}
+                    {{ form.email (class="flex-1 p-4 pl-0 bg-transparent outline-none text-white")}}
                 </div>
-                <div>
-                    {{ form.password.label }}
-                    {{ form.password }}
+                <div class="flex items-center bg-gray-400 border-b border-gray-500">
+                    {{ form.password.label (class="w-20 text-right mr-8 text-gray-100")}}
+                    {{ form.password (class="flex-1 p-4 pl-0 bg-transparent outline-none text-white")}}
                 </div>
-                <div>
-                    {{ form.confirm_password.label }}
-                    {{ form.confirm_password }}
+                <div class="flex items-center pl-2 bg-gray-400 rounded-b-lg mb-10">
+                    {{ form.confirm_password.label (class="w-20 text-right mr-8 text-gray-100")}}
+                    {{ form.confirm_password (class="flex-1 p-4 pl-0 bg-transparent outline-none text-white")}}
                 </div>
             </fieldset>
             <div>
-                {{ form.submit }}
+                {{ form.submit (class="block w-full rounded bg-green-400 py-3 text-white font-bold transition duration-500 ease-out hover:bg-green-800")}}
             </div>
         </form>
-    </div>
-    <div>
-
-        <!-- ------------LINK TO LOGIN IF ALREADY REGISTERED--------------- -->
-        <small>
-            Already Have Account? <a href="{{ url_for('login') }}">Log In</a>
-        </small>
+        <div>
+            <!-- ------------LINK TO LOGIN IF ALREADY REGISTERED--------------- -->
+            <small class="flex justify-center">
+                Already Have Account? <a href="{{ url_for('login') }}" class="font-bold text-blue-600 hover:text-blue-300">Log In</a>
+            </small>
+        </div>
     </div>
 
 {% endblock content %}
