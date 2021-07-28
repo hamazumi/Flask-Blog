@@ -2,16 +2,21 @@
 {% extends "layout.html" %}
 {% block content%}
 <!-- ----------- LOOPS THROUGH POSTS AND SHOWS ALL POST FROM POST DB------------ -->
-    {% for post in posts %}
-        <div>
-            <div>
-                <h2>{{ post.author.username }}</h2>
-                <small>{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+    <div class="bg-blue-100 min-h-screen w-screen">
+        {% for post in posts %}
+            <div class="max-w-3xl mx-auto bg-white border-4 border-gray-700 overflow-hidden shadow-md rounded-lg mb-12">
+                <div class="divide-y-2">
+                    <div class="flex items-center justify-between py-2 px-2">
+                        <h2 class="text-xl font-semibold">{{ post.author.username }}</h2>
+                        <small class="text-xs">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+                    </div>
+                    <div class="space-y-4 py-2 px-2">
+                        <!-- -------------TITLE LINKS TO SINGLE POST------------ -->
+                        <h2><a href="{{ url_for('post', post_id=post.id) }}" class="font-bold text-3xl underline text-gray-900 hover:text-gray-600">{{ post.title }}</a></h2>
+                        <p>{{ post.content }}</p>  
+                    </div>
+                </div>
             </div>
-            
-            <!-- -------------TITLE LINKS TO SINGLE POST------------ -->
-            <h2><a href="{{ url_for('post', post_id=post.id) }}">{{ post.title }}</a></h2>
-            <p>{{ post.content }}</p>  
-        </div>
-    {% endfor %}
+        {% endfor %}
+    </div>
 {% endblock content %}
