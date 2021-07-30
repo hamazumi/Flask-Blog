@@ -7,8 +7,8 @@ from flask_login import login_user, logout_user, current_user, login_required
 
 # ------------------APP ROUTES BELOW!!!-----------------
 
+# @app.route('/')
 @app.route('/')
-@app.route('/home')
 def homepage():
     posts = Post.query.all()
     return render_template('home.html', posts=posts)
